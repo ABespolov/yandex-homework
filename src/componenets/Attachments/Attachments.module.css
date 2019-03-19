@@ -1,0 +1,22 @@
+.attachments{
+  display: flex;
+  padding: 20px;
+  flex-flow: column;
+  background: #e6e6e6;
+}
+
+
+.attachment{
+  display: flex;
+  justify-content: end;
+}
+
+.imageAttachment{
+  flex-flow: row;
+  justify-content: start;
+}
+
+.imageAttachment .attachment img{
+  width: 64px;
+  height: 64px;
+}
