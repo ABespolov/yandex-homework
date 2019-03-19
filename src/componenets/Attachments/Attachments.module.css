@@ -1,22 +1,23 @@
-.attachments{
+.attachments {
   display: flex;
-  padding: 20px;
   flex-flow: column;
+  padding: 0 20px;
   background: #e6e6e6;
 }
 
-
-.attachment{
+.attachment {
   display: flex;
   justify-content: end;
+  padding: 20px 0;
 }
 
-.imageAttachment{
+.imageAttachment {
   flex-flow: row;
   justify-content: start;
 }
 
-.imageAttachment .attachment img{
+.imageAttachment .attachment img {
   width: 64px;
   height: 64px;
+  margin-left: 20px;
 }

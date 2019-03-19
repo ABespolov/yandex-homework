@@ -1,11 +1,11 @@
 .note {
+  display: flex;
+  flex-flow: column;
   grid-column: span 1;
+  overflow: hidden;
   color: #000;
   border: 1px solid rgba(218, 220, 224, 0.5);
-  border-radius: 16px;
-  overflow: hidden;
-  display: flex;
-  flex-flow: column
+  border-radius: 19px;
 }
 
 .size-s {
@@ -20,45 +20,64 @@
   grid-column: span 3;
 }
 
-.title{
-  font-size: 24px;
+.title {
   font-weight: 600;
+  font-size: 24px;
 }
 
-.text{
+.text {
   margin-bottom: 20px;
+  font-size: 18px;
+  line-height: 22px;
 }
 
-.content{
-  flex: 1 0 auto;
-
-}
-
-.footer{
+.footer {
   flex: 0 0 auto;
 }
 
-.wrapper{
-  border-radius: 16px;
-  padding: 20px;
+.wrapper {
   display: flex;
   flex-flow: column;
-  height: 100%;
   box-sizing: border-box;
+  height: 100%;
+  padding: 20px;
+  border-radius: 16px;
 }
 
-@media screen and (max-width: 1200px){
+.content {
+  flex: 1 0 auto;
+}
+
+.contentWrapper,
+.contentWrapperRed {
+  height: 100%;
+  border-bottom-right-radius: 20px;
+  border-bottom-left-radius: 20px;
+}
+
+.contentWrapperRed {
+  background: #db5341;
+}
+
+.fullImage {
+  width: 100%;
+  height: auto;
+}
+
+@media screen and (max-width: 1200px) {
   .size-l {
     grid-column: span 4;
     grid-row: span 1 / auto;
   }
+
   .size-s {
     grid-column: span 2;
   }
 }
 
-@media screen and (max-width: 600px){
-  .size-s, .size-m {
+@media screen and (max-width: 600px) {
+  .size-s,
+  .size-m {
     grid-column: span 4;
   }
 }

@@ -1,6 +1,7 @@
 import React from "react";
 import data from "../data.json";
-import { Note } from "../Note";
+import {Header} from "../Header";
+import {Note} from "../Note";
 import styles from "./App.module.css";
 
 interface Note {
@@ -13,7 +14,7 @@ const getColor = (note: Note) => {
 };
 
 export const App = () => {
-  const notes = Array.from({ length: 10 }, (v, k) => (
+  const notes = Array.from({length: 10}, (v, k) => (
     <Note
       // @ts-ignore
       color={getColor(data.notes[k])}
@@ -26,7 +27,14 @@ export const App = () => {
       items={data.notes[k].items}
       created={data.notes[k].created}
       attachments={data.notes[k].attachments}
+      reminder={data.notes[k].reminder}
+      url={data.notes[k].url}
     />
   ));
-  return <div className={styles.wrapper}>{notes}</div>;
+  return (
+    <>
+      <Header/>
+      <div className={styles.wrapper}>{notes}</div>
+    </>
+  );
 };
