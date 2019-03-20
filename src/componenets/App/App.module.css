@@ -4,6 +4,10 @@
   grid-auto-rows: minmax(162px, auto);
   grid-gap: 24px;
   grid-template-columns: repeat(4, 1fr);
+}
+
+.container {
   max-width: 1200px;
   margin: 0 auto;
+  padding-top: 64px;
 }

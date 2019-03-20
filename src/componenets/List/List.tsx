@@ -13,6 +13,15 @@ interface List {
 
 export const List: React.FC<List> = ({text, color, items}) => {
   const [listItem, setListItem] = useState(items);
+  const check = (txt: string) => {
+    const newItems = [...listItem];
+    newItems.forEach((item) => {
+      if (item.text === txt) {
+        item.checked = !item.checked;
+      }
+    });
+    setListItem(newItems);
+  };
   const getItems = (isChecked: boolean) => {
     return listItem.filter((item) => item.checked === isChecked)
       .map((item, index) =>

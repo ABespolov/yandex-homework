@@ -1,5 +1,6 @@
 import React from "react";
 import data from "../data.json";
+import {Filter} from "../Filter";
 import {Header} from "../Header";
 import {Note} from "../Note";
 import styles from "./App.module.css";
@@ -34,7 +35,10 @@ export const App = () => {
   return (
     <>
       <Header/>
-      <div className={styles.wrapper}>{notes}</div>
+      <div className={styles.container}>
+        <Filter colors={data.colors}/>
+        <div className={styles.wrapper}>{notes}</div>
+      </div>
     </>
   );
 };
