@@ -16,11 +16,11 @@ export const Header = () => {
         <div className={styles.searchBlock}>
           <img src={closeIcon} className={styles.clear} alt=""/>
           <input className={styles.input} placeholder="Поиск" type="text"/>
-          <button className={styles.searchButton}>Найти</button>
+          <button type="button" className={styles.searchButton}>Найти</button>
         </div>
         <div className={styles.controls}>
           <div>Активные</div>
-          <div>Архив</div>
+          <div className={styles["disable-control"]}>Архив</div>
           <div className={styles.addButton}>Добавить</div>
         </div>
       </div>

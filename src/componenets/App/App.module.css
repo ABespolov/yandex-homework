@@ -1,7 +1,7 @@
 .wrapper {
   display: grid;
   grid-auto-flow: dense;
-  grid-auto-rows: minmax(162px, auto);
+  grid-auto-rows: minmax(160px, auto);
   grid-gap: 24px;
   grid-template-columns: repeat(4, 1fr);
 }
@@ -9,5 +9,5 @@
 .container {
   max-width: 1200px;
   margin: 0 auto;
-  padding-top: 64px;
+  padding: 64px 24px 32px 24px;
 }

@@ -1,21 +1,45 @@
 .color {
   width: 32px;
   height: 32px;
-  margin-left: 16px;
   border-radius: 8px;
 }
 
 .filter {
   display: flex;
   align-items: center;
-  padding: 32px 20px;
+  padding: 32px 0;
   overflow: auto;
 }
 
 .title {
+  margin-right: 16px;
   font-size: 36px;
 }
 
 .colors {
   display: flex;
+}
+
+.colors .color:not(:first-child) {
+  margin-left: 16px;
+}
+
+::-webkit-scrollbar {
+  width: 0;
+  background: transparent;
+}
+
+@media screen and (max-width: 1200px) {
+  .title {
+    display: none;
+  }
+
+  .color {
+    width: 48px;
+    height: 48px;
+  }
+
+  .filter {
+    padding: 16px 0;
+  }
 }

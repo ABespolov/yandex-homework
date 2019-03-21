@@ -1,16 +1,16 @@
 
 @font-face {
-  font-family: 'Helvetica';
+  font-family: Helvetica;
   src: url('./fonts/Helvetica.woff');
 }
 
 body {
   margin: 0;
   padding: 0;
-  background: #f7f7f7;
   font-family:
     'Helvetica',
     sans-serif;
+  background: #f7f7f7;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -23,4 +23,10 @@ code {
     Consolas,
     'Courier New',
     monospace;
+}
+
+p,
+button,
+div {
+  font-family: Helvetica, serif;
 }

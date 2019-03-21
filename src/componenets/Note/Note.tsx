@@ -1,6 +1,7 @@
-import React, {useEffect, useRef} from "react";
+import React, {useLayoutEffect, useRef, useState} from "react";
 import {Attachments} from "../Attachments";
 import {CurrentDate} from "../CurrentDate";
+import {Edit} from "../Edit";
 import {List} from "../List";
 import {Tags} from "../Tags";
 import {Warning} from "../Warning";
@@ -8,10 +9,16 @@ import styles from "./Note.module.css";
 // @ts-ignore
 export const Note = ({color, size, title, text, type, items, tags, tagsList, created, attachments, reminder, url}) => {
   const note = useRef(null);
+  const [updateHeight, setUpdateHeight] = useState("false");
   // @ts-ignore
 
-  useEffect(() => {
-    const minHeight = 162;
+  useLayoutEffect(() => {
+    // @ts-ignore
+    note.current.style.gridRow = `span 1`;
+    // @ts-ignore
+    note.current.style.gridAutoRows = `auto`;
+    const minHeight = 160;
+
     // @ts-ignore
     let rows = Math.floor(note.current.offsetHeight / minHeight);
     if (rows > 3) {
@@ -19,7 +26,8 @@ export const Note = ({color, size, title, text, type, items, tags, tagsList, cre
     }
     // @ts-ignore
     note.current.style.gridRow = `span ${rows}`;
-  }, []);
+
+  }, [updateHeight]);
   let stl = {};
   if (attachments) {
     stl = {
@@ -38,16 +46,21 @@ export const Note = ({color, size, title, text, type, items, tags, tagsList, cre
       <div className={reminder ? styles.contentWrapperRed : styles.contentWrapper}>
         <div style={type !== "list" ? {backgroundColor: color} : {}} className={styles.wrapper}>
           <div className={styles.content}>
-            {type === "list" ? <List text={title} items={items} color={color}/> :
+            {type === "list" ? <List update={setUpdateHeight} text={title} items={items} color={color}/> :
               <div className={styles.title}>{title}</div>}
-            <div className={styles.text}>{
+            {text ? <div className={styles.text}>{
               text && text.split("\n").map((item: string) => {
-              return <div>{item}</div>;
-            })}</div>
+                return <div>{item}</div>;
+              })}</div> : null}
           </div>
           <div className={styles.footer}>
             <Tags tags={tags} tagsList={tagsList}/>
-            <CurrentDate created={created}/>
+            <div className={styles.footerWrapper}>
+              <div className={styles.edit}>
+              <Edit/>
+              </div>
+              <CurrentDate created={created}/>
+            </div>
           </div>
         </div>
       </div>

@@ -1,4 +1,12 @@
 .warning {
+  display: flex;
+  align-items: center;
   padding: 20px;
+  color: #fff;
+  font-weight: 600;
   background: #db5341;
+}
+
+.warning img {
+  margin-right: 12px;
 }
