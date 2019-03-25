@@ -9,11 +9,12 @@
 
   .linkAttachment {
     display: flex;
-    justify-content: end;
+    justify-content: start;
     align-items: center;
     margin-right: -5px;
     margin-left: -5px;
     padding: 14px 10px;
+
     @include smoothResize(font-size, 16, 18);
   }
 
