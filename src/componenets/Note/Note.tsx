@@ -56,7 +56,7 @@ export const Note: React.FC<NoteInterface> =
     }, [updateHeight]);
     return (
       <div ref={note} style={getStyle()} className={`${styles.note} ${styles[`size-${size}`]}`}>
-        {type === "image" ? <img style={{minHeight: "200px"}} className={styles.fullImage} src={url} alt=""/> : null}
+        {type === "image" ? <img style={{minHeight: "220px"}} className={styles.fullImage} src={url} alt=""/> : null}
         {reminder ? <Warning reminder={reminder}/> : null}
         <div className={`${styles.contentWrapper} ${reminder ? styles.contentWrapperReminder : ""}`}>
           <div style={type !== "list" ? {backgroundColor: color} : {}} className={styles.wrapper}>
