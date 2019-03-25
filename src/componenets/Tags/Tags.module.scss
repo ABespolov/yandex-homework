@@ -18,9 +18,6 @@
 @media (max-width: 1200px) {
   .tag {
     margin-top: 14px;
-  }
-
-  .tag:not(:first-child) {
-    margin-left: 0;
+    max-width: 140px;
   }
 }

@@ -1,11 +1,11 @@
 import React, {useState} from "react";
 import {ListItem} from "../ListItem";
-import styles from "./List.module.css";
+import styles from "./List.module.scss";
 
 interface List {
   update: any;
-  text: string;
-  color: string;
+  text?: string;
+  color?: string;
   items: Array<{
     checked: boolean;
     text: string
@@ -14,20 +14,21 @@ interface List {
 
 export const List: React.FC<List> = ({update, text, color, items}) => {
   const [listItem, setListItem] = useState(items);
-  const check = (txt: string) => {
+  const check = (e: React.MouseEvent<HTMLLIElement>, txt: string) => {
+    e.preventDefault();
     const newItems = [...listItem];
-    newItems.forEach((item) => {
-      if (item.text === txt) {
+    newItems.forEach((item, index) => {
+      if (item.text.localeCompare(txt) === 0) {
         item.checked = !item.checked;
       }
     });
     setListItem(newItems);
-    update(txt);
+    update(newItems);
   };
   const getItems = (isChecked: boolean) => {
     return listItem.filter((item) => item.checked === isChecked)
       .map((item, index) =>
-        <li onClick={() => check(item.text)}><ListItem item={items[index]} isChecked={item.checked}/></li>,
+        <li key={index} onClick={(e) => check(e, item.text)}><ListItem item={item} isChecked={item.checked}/></li>,
       );
   };
   return (

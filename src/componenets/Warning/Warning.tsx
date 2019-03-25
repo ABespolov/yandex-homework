@@ -2,7 +2,7 @@ import {compareAsc, distanceInWords} from "date-fns";
 import ru from "date-fns/locale/ru";
 import React from "react";
 import warningIcon from "../../icons/warning.svg";
-import styles from "./Warning.module.css";
+import styles from "./Warning.module.scss";
 
 interface Warning {
   reminder: number;

@@ -1,27 +1,28 @@
-.color {
-  width: 32px;
-  height: 32px;
-  border-radius: 8px;
-}
 
 .filter {
   display: flex;
   align-items: center;
   padding: 32px 0;
   overflow: auto;
-}
+  .title {
+    margin-right: 16px;
+    font-size: 36px;
+    position: relative;
+    top: -3px;
+  }
 
-.title {
-  margin-right: 16px;
-  font-size: 36px;
-}
+  .colors {
+    display: flex;
+    .color {
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+    }
+    .color:not(:first-child) {
+      margin-left: 16px;
+    }
 
-.colors {
-  display: flex;
-}
-
-.colors .color:not(:first-child) {
-  margin-left: 16px;
+  }
 }
 
 ::-webkit-scrollbar {

@@ -1,0 +1,13 @@
+$screenMin: 320;
+$screenMax: 1366;
+
+@mixin smoothResize($property, $valueMin, $valueMax) {
+  #{$property}: calc(#{$valueMin + 'px'} + (#{$valueMax} - #{$valueMin}) *
+  (100vw - #{$screenMin + 'px'}) / (#{$screenMax} - #{$screenMin}));
+  @media screen and (min-width: #{$screenMax + 'px'}){
+    #{$property}:  #{$valueMax + 'px'};
+  }
+  @media screen and (max-width: #{$screenMin + 'px'}){
+    #{$property}:  #{$valueMin + 'px'};
+  }
+}

@@ -1,0 +1,106 @@
+@import "../../mixins";
+
+.note {
+  display: flex;
+  flex-flow: column;
+  grid-column: span 1;
+  overflow: hidden;
+  color: #000;
+  border: 1px solid rgba(218, 220, 224, 0.5);
+  border-radius: 19px;
+
+  &:hover {
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+
+    .edit {
+      visibility: visible;
+    }
+  }
+
+  .contentWrapper {
+    height: 100%;
+    border-bottom-right-radius: 20px;
+    border-bottom-left-radius: 20px;
+
+    .wrapper {
+      display: flex;
+      flex-flow: column;
+      box-sizing: border-box;
+      height: 100%;
+      padding: 20px;
+      border-radius: 16px;
+
+      .content {
+        flex: 1 0 auto;
+
+        .title {
+          margin-bottom: 8px;
+          font-weight: 600;
+          @include smoothResize(font-size, 22, 24);
+          line-height: 28px;
+        }
+
+        .text {
+          margin-bottom: 12px;
+          line-height: 22px;
+          @include smoothResize(font-size, 16, 18);
+        }
+
+      }
+
+      .footer {
+        flex: 0 0 auto;
+
+        .footerWrapper {
+          display: flex;
+          justify-content: space-between;
+          margin-top: 15px;
+        }
+      }
+    }
+  }
+
+  .fullImage {
+    width: 100%;
+    height: auto;
+  }
+
+  .contentWrapperReminder {
+    background: #db5341;
+  }
+}
+
+.size-s {
+  grid-column: span 2;
+}
+
+.size-m {
+  grid-column: span 3;
+}
+
+.size-l {
+  grid-column: span 4;
+}
+
+.edit {
+  visibility: hidden;
+}
+
+@media screen and (max-width: 1200px) {
+  .size-l {
+    grid-column: span 6;
+    grid-row: span 1 / auto;
+  }
+  .size-m {
+    grid-column: span 6;
+  }
+  .size-s {
+    grid-column: span 3;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .size-s{
+    grid-column: span 6;
+  }
+}

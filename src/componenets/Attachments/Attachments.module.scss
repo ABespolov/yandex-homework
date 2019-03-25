@@ -1,0 +1,47 @@
+@import "../../mixins";
+
+.attachments {
+  display: flex;
+  flex-flow: column;
+  padding: 0 20px;
+  font-weight: 600;
+  background: #e6e6e6;
+
+  .linkAttachment {
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    margin-right: -5px;
+    margin-left: -5px;
+    padding: 14px 10px;
+    @include smoothResize(font-size, 16, 18);
+  }
+
+  .linkAttachment:not(:last-child) {
+    border-bottom: 1px solid #fff;
+  }
+
+  .images {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+
+    .imageAttachment {
+      display: flex;
+      align-items: center;
+      padding: 12px 0;
+      font-size: 0;
+
+      .attachment img {
+        width: 64px;
+        height: 64px;
+        margin-left: 24px;
+        border-radius: 4px;
+      }
+    }
+  }
+
+  .linkIcon {
+    margin-right: 12px;
+  }
+}

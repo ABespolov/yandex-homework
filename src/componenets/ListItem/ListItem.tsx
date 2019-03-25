@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "./ListItem.module.css";
+import styles from "./ListItem.module.scss";
 
 interface Items {
   text: string;
@@ -11,7 +11,7 @@ interface ListItem {
   isChecked: boolean;
 }
 
-export const ListItem: React.FC<ListItem> = ({ item, isChecked }) => {
+export const ListItem: React.FC<ListItem> = ({ item, isChecked}) => {
   return (
     <label htmlFor={item.text} className={`${styles.container} ${isChecked ? styles.checked : ""}`}>
       {item.text}

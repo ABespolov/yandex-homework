@@ -2,7 +2,7 @@ import React, {useState} from "react";
 import burgerIcon from "../../icons/burger.svg";
 import closeIcon from "../../icons/close.svg";
 import logoIcon from "../../icons/Logo.svg";
-import styles from "./Header.module.css";
+import styles from "./Header.module.scss";
 
 export const Header = () => {
   const [showMobileMenu, setShowMobileMenu] = useState(false);
@@ -16,7 +16,7 @@ export const Header = () => {
         <div className={styles.searchBlock}>
           <img src={closeIcon} className={styles.clear} alt=""/>
           <input className={styles.input} placeholder="Поиск" type="text"/>
-          <button type="button" className={styles.searchButton}>Найти</button>
+          <button className={styles.searchButton}>Найти</button>
         </div>
         <div className={styles.controls}>
           <div>Активные</div>

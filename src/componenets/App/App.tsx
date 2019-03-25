@@ -4,41 +4,48 @@ import {Filter} from "../Filter";
 import {Footer} from "../Footer";
 import {Header} from "../Header";
 import {Note} from "../Note";
-import styles from "./App.module.css";
+import {NoteInterface} from "../Note";
+import styles from "./App.module.scss";
 
-interface Note {
-  color: number;
-}
-
-const getColor = (note: Note) => {
+const getColor = (note: NoteInterface) => {
   const colorObject = data.colors.find((item) => item.id === note.color);
   return colorObject ? colorObject.color : "#fff";
 };
 
+const getTags = (note: NoteInterface) => {
+  const tagsList = data.tags.filter((item) =>
+    // @ts-ignore
+    note.tags && note.tags.some((num) => num === item.id));
+  return tagsList;
+};
+
 export const App = () => {
-  const notes = Array.from({length: 10}, (v, k) => (
+  const notes = Array(data.notes.length).fill(0).map((item, index) => (
     <Note
       // @ts-ignore
-      color={getColor(data.notes[k])}
-      size={data.notes[k].size}
-      title={data.notes[k].title}
-      text={data.notes[k].text}
-      type={data.notes[k].type}
-      tags={data.notes[k].tags}
-      tagsList={data.tags}
-      items={data.notes[k].items}
-      created={data.notes[k].created}
-      attachments={data.notes[k].attachments}
-      reminder={data.notes[k].reminder}
-      url={data.notes[k].url}
+      color={getColor(data.notes[index])}
+      size={data.notes[index].size}
+      title={data.notes[index].title}
+      text={data.notes[index].text}
+      type={data.notes[index].type}
+      // @ts-ignore
+      tags={getTags(data.notes[index])}
+      // @ts-ignore
+      items={data.notes[index].items}
+      created={data.notes[index].created}
+      attachments={data.notes[index].attachments}
+      reminder={data.notes[index].reminder}
+      url={data.notes[index].url}
     />
   ));
   return (
     <>
-      <Header/>
-      <div className={styles.container}>
-        <Filter colors={data.colors}/>
-        <div className={styles.wrapper}>{notes}</div>
+      <div className={styles.wrapper}>
+        <Header/>
+        <div className={styles.content}>
+          <Filter colors={data.colors}/>
+          <div className={styles.notesWrapper}>{notes}</div>
+        </div>
       </div>
       <Footer/>
     </>

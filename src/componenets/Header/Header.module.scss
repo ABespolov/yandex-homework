@@ -1,0 +1,127 @@
+@import "../../mixins";
+
+.header {
+  position: fixed;
+  z-index: 100;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-sizing: border-box;
+  width: 100%;
+  height: 64px;
+  padding: 0 16px;
+  background: #fff;
+
+
+  .controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 16px;
+
+    div {
+      padding: 7px 15px;
+    }
+  }
+
+  .disable-control {
+    color: rgba(51, 51, 51, 0.6);
+  }
+
+  .input {
+    box-sizing: border-box;
+    max-width: 400px;
+    height: 32px;
+    padding-left: 12px;
+    line-height: 32px;
+    border: 2px solid #e6e6e6;
+    border-radius: 4px 0 0 4px;
+    @include smoothResize(width, 200, 400);
+
+    &::placeholder {
+      font-family: Helvetica, serif;
+      opacity: 0.2;
+    }
+  }
+
+
+  .addButton {
+    margin-left: 17px;
+    background: #fc0;
+    border-radius: 4px;
+  }
+
+  .searchBlock {
+    position: absolute;
+    left: calc(50% - 38px - 200px);
+    display: flex;
+    margin: 0 auto;
+
+    .searchButton {
+      box-sizing: border-box;
+      width: 76px;
+      height: 32px;
+      font-size: 15px;
+      background: #e6e6e6;
+      border: 2px solid #e6e6e6;
+      border-radius: 0 4px 4px 0;
+      padding-bottom: 3px;
+    }
+  }
+
+  .clear {
+    position: absolute;
+    top: calc(50% - 6px);
+    right: calc(76px + 8px);
+  }
+
+  .burger {
+    display: none;
+  }
+
+  .menuContent {
+    top: -999px;
+    display: flex;
+  }
+
+  .mobileMenu.menuContent {
+    top: 64px;
+    z-index: 1;
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  .header {
+    .burger {
+      display: block;
+    }
+
+    .menuContent {
+      position: absolute;
+      left: 0;
+      z-index: -1;
+      flex-flow: column-reverse;
+      justify-content: center;
+      width: 100%;
+      padding-bottom: 16px;
+      background: #fff;
+    }
+
+    .searchBlock {
+      position: relative;
+      left: 0;
+    }
+
+    .controls {
+      flex-flow: column;
+      justify-content: center;
+
+      div {
+        box-sizing: border-box;
+        margin: 0 auto 16px auto;
+        text-align: center;
+        @include smoothResize(width, 276, 476);
+      }
+    }
+  }
+}

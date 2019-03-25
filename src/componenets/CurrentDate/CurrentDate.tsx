@@ -1,7 +1,7 @@
+import {compareAsc, distanceInWords} from "date-fns";
+import ru from "date-fns/locale/ru";
 import React from "react";
-import {distanceInWords, compareAsc} from 'date-fns';
-import ru from 'date-fns/locale/ru';
-import styles from "./CurrentDate.module.css";
+import styles from "./CurrentDate.module.scss";
 
 interface CurrentDate {
   created: number;
@@ -10,10 +10,10 @@ interface CurrentDate {
 export const CurrentDate: React.FC<CurrentDate> = ({created = 0}) => {
   const date = new Date(1970, 0, 1);
   date.setMilliseconds(created);
-    const result = distanceInWords(
+  const result = distanceInWords(
       new Date(),
       date,
-      {locale: ru}
+      {locale: ru},
     );
   return (
     <div className={styles.date}>

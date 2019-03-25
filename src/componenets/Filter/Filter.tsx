@@ -1,5 +1,5 @@
 import React, {useEffect, useRef} from "react";
-import styles from "./Filter.module.css";
+import styles from "./Filter.module.scss";
 
 interface Filter {
   colors: Array<{

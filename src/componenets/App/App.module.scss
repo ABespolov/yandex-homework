@@ -1,0 +1,29 @@
+.wrapper {
+  min-height: calc(100vh - 64px);
+
+  .content {
+    max-width: 1020px;
+    margin: 0 auto;
+    padding: 64px 24px 32px 24px;
+
+    .notesWrapper {
+      display: grid;
+      grid-auto-flow: dense;
+      grid-auto-rows: minmax(160px, auto);
+      grid-template-columns: repeat(6, 1fr);
+      grid-gap: 24px;
+    }
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .wrapper {
+    .content {
+      padding: 64px 16px 32px 16px;
+
+      .notesWrapper {
+        grid-gap: 16px;
+      }
+    }
+  }
+}

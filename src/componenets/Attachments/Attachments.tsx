@@ -1,7 +1,7 @@
 import React from "react";
 import linkIcon from "../../icons/link.svg";
 import imageIcon from "../../icons/picture.svg";
-import styles from "./Attachments.module.css";
+import styles from "./Attachments.module.scss";
 
 interface Attachments {
   attachments: Array<{

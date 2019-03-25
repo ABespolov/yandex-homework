@@ -10,12 +10,12 @@
   margin-left: -20px;
   padding: 24px;
   border-radius: 16px;
+  .listHeader {
+    font-weight: 600;
+    font-size: 24px;
+  }
 }
 
-.listHeader {
-  font-weight: 600;
-  font-size: 24px;
-}
 
 .checkedList {
   margin: 26px auto  7px -10px;
