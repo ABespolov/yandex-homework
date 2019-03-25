@@ -9,7 +9,12 @@
   border: 1px solid rgba(218, 220, 224, 0.5);
   border-radius: 19px;
 
+  .edit {
+    visibility: hidden;
+  }
+
   &:hover {
+    border: 1px solid rgba(0, 0, 0, 0.1);
     box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
 
     .edit {
@@ -36,16 +41,18 @@
         .title {
           margin-bottom: 8px;
           font-weight: 600;
+
           @include smoothResize(font-size, 22, 24);
+
           line-height: 28px;
         }
 
         .text {
           margin-bottom: 12px;
           line-height: 22px;
+
           @include smoothResize(font-size, 16, 18);
         }
-
       }
 
       .footer {
@@ -82,25 +89,23 @@
   grid-column: span 4;
 }
 
-.edit {
-  visibility: hidden;
-}
-
 @media screen and (max-width: 1200px) {
   .size-l {
     grid-column: span 6;
     grid-row: span 1 / auto;
   }
+
   .size-m {
     grid-column: span 6;
   }
+
   .size-s {
     grid-column: span 3;
   }
 }
 
 @media screen and (max-width: 600px) {
-  .size-s{
+  .size-s {
     grid-column: span 6;
   }
 }

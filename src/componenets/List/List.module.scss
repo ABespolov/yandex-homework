@@ -1,3 +1,5 @@
+@import "../../mixins";
+
 .list,
 .checkedList {
   padding: 0;
@@ -10,12 +12,13 @@
   margin-left: -20px;
   padding: 24px;
   border-radius: 16px;
+
   .listHeader {
     font-weight: 600;
-    font-size: 24px;
+
+    @include smoothResize(font-size, 22, 24);
   }
 }
-
 
 .checkedList {
   margin: 26px auto  7px -10px;
@@ -24,7 +27,7 @@
 
 .checkedList li {
   display: inline-block;
-  margin-left: 10px;
+  margin-left: 12px;
   padding: 7px 0;
 }
 

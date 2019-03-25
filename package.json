@@ -15,6 +15,7 @@
     "react": "^16.8.4",
     "react-dom": "^16.8.4",
     "react-scripts": "2.1.8",
+    "serve": "^10.1.2",
     "stylelint": "^9.10.1",
     "stylelint-config-rational-order": "^0.0.4",
     "stylelint-config-standard": "^18.2.0",
@@ -32,7 +33,7 @@
         "tslint --fix",
         "git add"
       ],
-      "*.{css,less,sass}": [
+      "*.{css,less,scss}": [
         "stylelint --fix",
         "git add"
       ]
@@ -44,7 +45,8 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "stylelint": "stylelint \"**/*.css\" --fix",
-    "tslint": "tslint ./src/**/*.{ts,tsx,js,jsx} --fix"
+    "tslint": "tslint ./src/**/*.{ts,tsx,js,jsx} --fix",
+    "heroku-postbuild": "npm run build"
   },
   "eslintConfig": {
     "extends": "react-app"

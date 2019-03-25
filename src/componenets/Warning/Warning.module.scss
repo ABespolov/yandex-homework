@@ -3,10 +3,11 @@
 .warning {
   display: flex;
   align-items: center;
-  padding: 20px;
+  padding: 14px 20px;
   color: #fff;
   font-weight: 600;
   background: #db5341;
+
   @include smoothResize(font-size, 16, 18);
 }
 
