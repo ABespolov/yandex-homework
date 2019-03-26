@@ -1,5 +1,6 @@
 .wrapper {
   min-height: calc(100vh - 64px);
+  overflow: hidden;
 
   .content {
     max-width: 1020px;
@@ -10,8 +11,8 @@
       display: grid;
       grid-auto-flow: dense;
       grid-auto-rows: minmax(160px, auto);
-      grid-template-columns: repeat(6, 1fr);
       grid-gap: 24px;
+      grid-template-columns: repeat(6, 1fr);
     }
   }
 }
