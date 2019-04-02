@@ -4,7 +4,7 @@ import React from "react";
 import styles from "./CurrentDate.module.scss";
 
 interface CurrentDate {
-  created: number;
+  created?: number;
 }
 
 export const CurrentDate: React.FC<CurrentDate> = ({created = 0}) => {

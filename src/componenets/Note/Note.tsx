@@ -1,4 +1,4 @@
-import React, {useLayoutEffect, useRef, useState} from "react";
+import React, {createRef, useLayoutEffect, useRef, useState} from "react";
 import {Attachments} from "../Attachments";
 import {CurrentDate} from "../CurrentDate";
 import {Edit} from "../Edit";
@@ -8,23 +8,22 @@ import {Warning} from "../Warning";
 import styles from "./Note.module.scss";
 
 export interface NoteInterface {
-    color: any;
-    size: string;
+    color?: string;
+    size?: string;
     title?: string;
     text?: string;
-    type: string;
-    created: number;
+    type?: string;
+    created?: number;
     reminder?: number;
     url?: string;
-    tags: Array<{
-        id: number,
+    tags?: Array<{
         tag: string,
     }>;
     attachments?: Array<{
         type: string,
         url: string,
     }>;
-    items: Array<{
+    items?: Array<{
         text: string,
         checked: boolean,
     }>;
@@ -32,7 +31,7 @@ export interface NoteInterface {
 
 export const Note: React.FC<NoteInterface> =
     ({color, size, title, text, type, items, tags, created, attachments, reminder, url}) => {
-        const note = useRef(null);
+        const note: React.RefObject<HTMLInputElement> = createRef();
         const [updateHeight, setUpdateHeight] = useState("false");
         const getStyle = () => {
             if (type !== "list" && attachments) {
@@ -46,17 +45,14 @@ export const Note: React.FC<NoteInterface> =
         };
         useLayoutEffect(() => {
             if (note !== null && note.current !== null) {
-                // @ts-ignore
                 note.current.style.gridRow = `span 1`;
+                const minHeight = 160;
+                let rows = Math.floor(note.current.offsetHeight / minHeight);
+                if (rows > 3) {
+                    rows = 3;
+                }
+                note.current.style.gridRow = `span ${rows}`;
             }
-            const minHeight = 160;
-            // @ts-ignore
-            let rows = Math.floor(note.current.offsetHeight / minHeight);
-            if (rows > 3) {
-                rows = 3;
-            }
-            // @ts-ignore
-            note.current.style.gridRow = `span ${rows}`;
         }, [updateHeight]);
         return (
             <div ref={note} style={getStyle()} className={`${styles.note} ${styles[`size-${size}`]}`}>
@@ -70,8 +66,8 @@ export const Note: React.FC<NoteInterface> =
                                 <List update={setUpdateHeight} text={title} items={items} color={color}/> :
                                 <div className={styles.title}>{title}</div>}
                             {text ? <div className={styles.text}>{
-                                text && text.split("\n").map((item: string) => {
-                                    return <div>{item}</div>;
+                                text && text.split("\n").map((item, index) => {
+                                    return <div key={index}>{item}</div>;
                                 })}</div> : null}
                         </div>
                         <div className={styles.footer}>
