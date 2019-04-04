@@ -50,12 +50,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "stylelint": "stylelint \"**/*.css\" --fix",
-    "tslint": "tslint client/src/**/*.{ts,tsx,js,jsx} --fix",
-    "heroku-postbuild": "npm run build",
-    "client-install": "npm install",
-    "server": "sudo nodemon server.js",
-    "client": "sudo npm start",
-    "dev": "concurrently \"npm run server\" \"npm run client\""
+    "tslint": "tslint client/src/**/*.{ts,tsx,js,jsx} --fix"
   },
   "eslintConfig": {
     "extends": "react-app"
