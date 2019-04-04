@@ -4,6 +4,11 @@ const path = require("path");
 const port = process.env.PORT || 8000;
 const app = express();
 
+app.get("/ping", (req, res) => {
+    res.send("pong");
+});
+
+
 //Static file declaration
 app.use(express.static(path.join(__dirname, 'client/build')));
 
@@ -17,11 +22,7 @@ if(process.env.NODE_ENV === 'production') {
 }
 //build mode
 app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname+'/client/public/index.html'));
-})
-
-app.get("/ping", (req, res) => {
-    res.send("pong");
+    res.sendFile(path.join(__dirname+'client/public/index.html'));
 });
 
 app.listen(port, (req, res) => {
