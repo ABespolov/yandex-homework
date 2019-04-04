@@ -19,8 +19,21 @@ const getTags = (note: NoteData) => {
     return tagsList;
 };
 
+const getData = async () => {
+    const response = await fetch("/ping");
+
+    const body = await response.text();
+    // console.log(body);
+
+    // if (response.status !== 200) throw Error(body.message);
+
+    return body;
+};
+
 export const App = () => {
     const nts = new Notes();
+    getData();
+
     Notes.factory(nts, data.notes);
 
     const notes = nts.map((item, index) => {
