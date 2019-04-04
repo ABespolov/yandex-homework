@@ -43,6 +43,7 @@
       ]
     }
   },
+  "proxy": "http://localhost:8000",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
@@ -50,10 +51,10 @@
     "eject": "react-scripts eject",
     "stylelint": "stylelint \"**/*.css\" --fix",
     "tslint": "tslint client/src/**/*.{ts,tsx,js,jsx} --fix",
-    "heroku-postbuild": "cd client && npm install && npm install --only=dev --no-shrinkwrap && npm run build",
+    "heroku-postbuild": "npm run build",
     "client-install": "npm install",
     "server": "sudo nodemon server.js",
-    "client": "cd client && npm start",
+    "client": "sudo npm start",
     "dev": "concurrently \"npm run server\" \"npm run client\""
   },
   "eslintConfig": {

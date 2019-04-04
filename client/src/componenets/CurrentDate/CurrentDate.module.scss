@@ -1,0 +1,7 @@
+@import "../../mixins";
+
+.date {
+  text-align: right;
+
+  @include smoothResize(font-size, 16, 18);
+}
