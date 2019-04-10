@@ -1,0 +1,14 @@
+{
+  "include": ["./server/src/**/*"],
+  "compilerOptions": {
+    "outDir": "./server/lib",
+    "declaration": true,
+    "target": "es5",
+    "module": "commonjs",
+    "lib": ["es6","dom"],
+    "rootDir": "./server/src",
+    "strict": true,
+    "resolveJsonModule": true,
+    "moduleResolution": "node"
+  }
+}
