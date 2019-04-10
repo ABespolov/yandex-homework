@@ -1,5 +1,5 @@
 import {compareAsc, distanceInWords} from "date-fns";
-import ru from "date-fns";
+import ru from "date-fns/locale/ru";
 import React from "react";
 import styles from "./CurrentDate.module.scss";
 
