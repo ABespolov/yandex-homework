@@ -1,58 +1,69 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import data from "../data.json";
 import {Filter} from "../Filter";
 import {Footer} from "../Footer";
 import {Header} from "../Header";
 import {Note} from "../Note";
 import styles from "./App.module.scss";
-import {NoteData} from "./Notes";
-import {Notes} from "./Notes";
+import axios from 'axios';
 
-const getColor = (note: NoteData) => {
-    const colorObject = data.colors.find((item) => item.id === note.color);
-    return colorObject ? colorObject.color : "#fff";
-};
+export interface NoteData {
+    currentData: {
+        type: string;
+        title?: string;
+        tags?: Array<{
+            tag: string,
+        }>;
+        color?: string;
+        items?: Item[];
+        size: string;
+        created: number;
+        text?: string;
+        attachments?: Attachment[];
+        reminder?: number;
+        url?: string;
+    }
+}
 
-const getTags = (note: NoteData) => {
-    const tagsList = data.tags.filter((item) =>
-        note.tags && note.tags.some((num) => num === item.id));
-    return tagsList;
-};
+interface Attachment {
+    type: string;
+    url: string;
+}
+
+interface Item {
+    text: string;
+    checked: boolean;
+}
+
 
 const getData = async () => {
-    const response = await fetch("/ping");
-
-    const body = await response.text();
-    // console.log(body);
-
-    // if (response.status !== 200) throw Error(body.message);
-
-    return body;
+    const response = await axios.get("/api/cards");
+    return response.data;
 };
 
 export const App = () => {
-    const nts = new Notes();
-    getData();
-
-    Notes.factory(nts, data.notes);
-
-    const notes = nts.map((item, index) => {
-        index = index || 0;
-        return <Note
-            key={item && item.data.created}
-            color={getColor(data.notes[index])}
-            size={item && item.data.size}
-            title={item && item.data.title}
-            text={item && item.data.text}
-            type={item && item.data.type}
-            tags={getTags(data.notes[index])}
-            items={item && item.data.items}
-            created={item && item.data.created}
-            attachments={item && item.data.attachments}
-            reminder={item && item.data.reminder}
-            url={item && item.data.url}
-        />;
-    });
+    const [notes, setNotes] = useState();
+    useEffect(() => {
+        getData().then((nts: NoteData[]) => {
+            const notes = nts.map((item: NoteData) => {
+                return <Note
+                    key={item && item.currentData.created}
+                    color={item && item.currentData.color}
+                    size={item && item.currentData.size}
+                    title={item && item.currentData.title}
+                    text={item && item.currentData.text}
+                    type={item && item.currentData.type}
+                    tags={item && item.currentData.tags}
+                    items={item && item.currentData.items}
+                    created={item && item.currentData.created}
+                    attachments={item && item.currentData.attachments}
+                    reminder={item && item.currentData.reminder}
+                    url={item && item.currentData.url}
+                />;
+            });
+            setNotes(notes);
+        });
+    }, []);
     return (
         <>
             <div className={styles.wrapper}>

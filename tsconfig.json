@@ -3,9 +3,9 @@
   "compilerOptions": {
     "outDir": "./server/lib",
     "declaration": true,
-    "target": "es5",
+    "target": "es2015",
     "module": "commonjs",
-    "lib": ["es6","dom"],
+    "lib": ["es2016","dom"],
     "rootDir": "./server/src",
     "strict": true,
     "resolveJsonModule": true,
