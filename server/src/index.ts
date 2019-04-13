@@ -30,9 +30,10 @@ app.post('/', function (req: any, res: any) {
     console.log(req.body.user.name);
 });
 
-
-app.use(express.static(path.join(__dirname, '/../../client/build')));
 app.use(express.static(path.join(__dirname, '/../../client/build/static')));
+app.use(express.static(path.join(__dirname, '/../../client/build')));
+app.use(express.static(__dirname));
+
 app.get('*', (req: any, res: any) => {
     res.sendFile(path.join(__dirname, '/../../client/build/index.html'));
 })
