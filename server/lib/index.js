@@ -26,19 +26,17 @@ app.get("/api/cards", (req, res) => {
 app.post('/', function (req, res) {
     console.log(req.body.user.name);
 });
-app.use(express.static(path.join(__dirname, 'client/build')));
-//production mode
-if (process.env.NODE_ENV === 'production') {
-    app.use(express.static(path.join(__dirname, 'client/build')));
-    //
+//app.use(express.static(path.join(__dirname, '/../../client/build')));
+if (true) {
+    app.use(express.static(path.join(__dirname, '/../../client/build/index.html')));
+    console.log(path.join(__dirname, '/../../client/build/index.html'));
     app.get('*', (req, res) => {
-        res.sendfile(path.join(__dirname = 'client/build/index.html'));
+        res.sendFile(path.join(__dirname, '/../../client/build/index.html'));
     });
 }
-//build mode
-app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname + 'client/public/index.html'));
-});
+/*app.get('*', (req: any, res: any) => {
+    res.sendFile(path.join(__dirname + '/../../client/public/index.html'));
+});*/
 app.listen(port, (req, res) => {
     // console.log(`server listening on port: ${port}`);
 });

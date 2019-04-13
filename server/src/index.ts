@@ -30,18 +30,11 @@ app.post('/', function (req: any, res: any) {
     console.log(req.body.user.name);
 });
 
+
 app.use(express.static(path.join(__dirname, '/../../client/build')));
-
-if (process.env.NODE_ENV === 'production') {
-    app.use(express.static(path.join(__dirname, '/../../client/build')));
-    app.get('*', (req: any, res: any) => {
-        res.sendFile(path.join(__dirname = '/../../client/build/index.html'));
-    })
-}
-
 app.get('*', (req: any, res: any) => {
-    res.sendFile(path.join(__dirname + '/../../client/public/index.html'));
-});
+    res.sendFile(path.join(__dirname, '/../../client/build/index.html'));
+})
 
 app.listen(port, (req: any, res: any) => {
 // console.log(`server listening on port: ${port}`);
