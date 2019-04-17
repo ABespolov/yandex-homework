@@ -6,31 +6,39 @@ import {List} from "../List";
 import {Tags} from "../Tags";
 import {Warning} from "../Warning";
 import styles from "./Note.module.scss";
+import {useReduxState} from "../../redux-hooks/redux-hooks";
 
 export interface NoteInterface {
-    color?: string;
-    size?: string;
-    title?: string;
-    text?: string;
-    type?: string;
-    created?: number;
-    reminder?: number;
-    url?: string;
-    tags?: Array<{
-        tag: string,
-    }>;
-    attachments?: Array<{
-        type: string,
-        url: string,
-    }>;
-    items?: Array<{
-        text: string,
-        checked: boolean,
-    }>;
+    noteData:{
+        currentData: {
+            color?: string;
+            size?: string;
+            title?: string;
+            text?: string;
+            type?: string;
+            created: number;
+            reminder?: number;
+            url?: string;
+            tags?: Array<{
+                tag: string,
+            }>;
+            attachments?: Array<{
+                type: string,
+                url: string,
+            }>;
+            items?: Array<{
+                text: string,
+                checked: boolean,
+            }>;
+        }
+    }
 }
 
 export const Note: React.FC<NoteInterface> =
-    ({color, size, title, text, type, items, tags, created, attachments, reminder, url}) => {
+    ({noteData}) => {
+        const {color, size, title, text, type, items, tags,
+            created, attachments, reminder, url} = noteData.currentData;
+        const state = useReduxState();
         const note: React.RefObject<HTMLInputElement> = createRef();
         const [updateHeight, setUpdateHeight] = useState("false");
         const getStyle = () => {
@@ -53,7 +61,7 @@ export const Note: React.FC<NoteInterface> =
                 }
                 note.current.style.gridRow = `span ${rows}`;
             }
-        }, [updateHeight]);
+        }, [updateHeight, state.cards]);
         return (
             <div ref={note} style={getStyle()} className={`${styles.note} ${styles[`size-${size}`]}`}>
                 {type === "image" ?
@@ -74,7 +82,7 @@ export const Note: React.FC<NoteInterface> =
                             <Tags tags={tags}/>
                             <div className={styles.footerWrapper}>
                                 <div className={styles.edit}>
-                                    <Edit/>
+                                    <Edit id={created}/>
                                 </div>
                                 <CurrentDate created={created}/>
                             </div>

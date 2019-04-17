@@ -22,18 +22,24 @@ app.get("/api/cards", (req: any, res: any) => {
         }
 
     } else {
-        res.send(nts.toArray());
+        res.send(nts.getAllNotes(false));
     }
 });
+
+app.get("/api/archive", (req: any, res: any) => {
+    if (req.query.id) {
+        nts.addToArchive(+req.query.id);
+        res.status(200).send('Added');
+    }else{
+        res.send(nts.getAllNotes(true));
+    }
+});
+
 
 app.post('/', function (req: any, res: any) {
     console.log(req.body.user.name);
 });
 
-app.use(express.static(path.join(__dirname, '/../../client/build')));
-app.get('*', (req: any, res: any) => {
-    res.sendFile(path.join(__dirname, '/../../client/build/index.html'));
-});
 
 app.listen(port, (req: any, res: any) => {
 // console.log(`server listening on port: ${port}`);

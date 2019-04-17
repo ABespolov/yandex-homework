@@ -1,5 +1,5 @@
 import {uniFetchApi} from "../api/api";
-import {FILTER_CARDS, GET_CARDS} from "../api/constants";
+import {ADD_TO_ARCHIVE, FILTER_CARDS, GET_CARDS, GET_ARCHIVE} from "../api/constants";
 
 export const getCards = (dispatch: any) => {
     uniFetchApi(GET_CARDS)
@@ -13,4 +13,16 @@ export const filterCards = (dispatch: any, colorId: string) => {
         .then((data) => {
             dispatch({type: "setCards", cards: data});
         });
+};
+
+export const addToArchive = (dispatch: any, id: string, cards: {}) => {
+    uniFetchApi(ADD_TO_ARCHIVE, id);
+    dispatch({type: "setCards", cards: cards});
+};
+
+export const getArchive = (dispatch: any) => {
+    uniFetchApi(GET_ARCHIVE)
+        .then((data) => {
+            dispatch({type: "setCards", cards: data});
+    });
 };

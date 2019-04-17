@@ -40,38 +40,24 @@ export const App = () => {
     const state = useReduxState();
     const dispatch = useReduxDispatch();
 
-    const [notes, setNotes] = useState();
-
     useEffect(() => {
-        if (Object.keys(state.cards).length === 0) {
+        if (!Object.keys(state.cards).length) {
             getCards(dispatch);
-        } else {
-            const nts = state.cards && state.cards.map((item: NoteData) => {
-                return <Note
-                    key={item && item.currentData.created}
-                    color={item && item.currentData.color}
-                    size={item && item.currentData.size}
-                    title={item && item.currentData.title}
-                    text={item && item.currentData.text}
-                    type={item && item.currentData.type}
-                    tags={item && item.currentData.tags}
-                    items={item && item.currentData.items}
-                    created={item && item.currentData.created}
-                    attachments={item && item.currentData.attachments}
-                    reminder={item && item.currentData.reminder}
-                    url={item && item.currentData.url}
-                />;
-            });
-            setNotes(nts);
         }
-    }, [state.cards]);
+    }, []);
+
     return (
         <>
             <div className={styles.wrapper}>
                 <Header/>
                 <div className={styles.content}>
                     <Filter colors={data.colors}/>
-                    <div className={styles.notesWrapper}>{notes}</div>
+                    <div className={styles.notesWrapper}>
+                        {Object.keys(state.cards).length ?
+                            state.cards.map((item: NoteData, index: number) => {
+                                return <Note key={index} noteData={item}/>;
+                            }) : null}
+                    </div>
                 </div>
             </div>
             <Footer/>

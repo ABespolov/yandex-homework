@@ -32,12 +32,17 @@ class Notes {
             String(item.data.color) === color);
     }
 
+    public addToArchive(id: number){
+        const note = this.notes.find((item: Note) => item.data.created === id);
+        note!.isArchive = !note!.isArchive;
+    }
+
     public addNote(data: NoteData) {
         this.notes.push(new Note(data));
     }
 
-    public toArray() {
-        return this.notes;
+    public getAllNotes(isArchive: boolean) {
+        return this.notes.filter((item: Note) => isArchive === item.isArchive);
     }
 
     public map(callback: (item?: Note, index?: number, array?: Note[]) => NoteInterface) {

@@ -1,5 +1,5 @@
 import React, {useEffect, useRef, useState} from "react";
-import {filterCards} from "../../redux-hooks/actions";
+import {filterCards, getCards} from "../../redux-hooks/actions";
 import {useReduxDispatch} from "../../redux-hooks/redux-hooks";
 import styles from "./Filter.module.scss";
 
@@ -21,7 +21,14 @@ export const Filter: React.FC<Filter> = ({colors}) => {
 
     const filters = colors.map((item, index) =>
      <div key={index} className={styles.color}
-          onClick={() => filterByColor(item.id, item.color)}
+          onClick={() =>{
+              if(currColor === item.color){
+                  getCards(dispatch);
+                  setCurrColor(null);
+              }else{
+                  filterByColor(item.id, item.color);
+              }
+          }}
           style={{backgroundColor: item.color,
               opacity: currColor === item.color ? 1 : 0.6}}/>);
     return (

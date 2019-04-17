@@ -1,10 +1,12 @@
 export interface Action {
-    type: "setCards";
-    cards: {};
+    type: "setCards" | "addToArchive";
+    cards: {
+        currentData: {}
+    }
 }
 
 const initialState = {
-    cards: {},
+    cards: {}
 };
 
 export const reducer = (state = initialState, action: Action) => {
