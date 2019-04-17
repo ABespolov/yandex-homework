@@ -1,11 +1,12 @@
 import React, {useEffect, useState} from "react";
+import {getCards} from "../../redux-hooks/actions";
+import {useReduxDispatch, useReduxState} from "../../redux-hooks/redux-hooks";
 import data from "../data.json";
 import {Filter} from "../Filter";
 import {Footer} from "../Footer";
 import {Header} from "../Header";
 import {Note} from "../Note";
 import styles from "./App.module.scss";
-import axios from 'axios';
 
 export interface NoteData {
     currentData: {
@@ -22,7 +23,7 @@ export interface NoteData {
         attachments?: Attachment[];
         reminder?: number;
         url?: string;
-    }
+    };
 }
 
 interface Attachment {
@@ -35,17 +36,17 @@ interface Item {
     checked: boolean;
 }
 
-
-const getData = async () => {
-    const response = await axios.get("/api/cards");
-    return response.data;
-};
-
 export const App = () => {
+    const state = useReduxState();
+    const dispatch = useReduxDispatch();
+
     const [notes, setNotes] = useState();
+
     useEffect(() => {
-        getData().then((nts: NoteData[]) => {
-            const notes = nts.map((item: NoteData) => {
+        if (Object.keys(state.cards).length === 0) {
+            getCards(dispatch);
+        } else {
+            const nts = state.cards && state.cards.map((item: NoteData) => {
                 return <Note
                     key={item && item.currentData.created}
                     color={item && item.currentData.color}
@@ -61,9 +62,9 @@ export const App = () => {
                     url={item && item.currentData.url}
                 />;
             });
-            setNotes(notes);
-        });
-    }, []);
+            setNotes(nts);
+        }
+    }, [state.cards]);
     return (
         <>
             <div className={styles.wrapper}>
