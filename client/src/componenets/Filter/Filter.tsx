@@ -21,11 +21,11 @@ export const Filter: React.FC<Filter> = ({colors}) => {
 
     const filters = colors.map((item, index) =>
      <div key={index} className={styles.color}
-          onClick={() =>{
-              if(currColor === item.color){
+          onClick={() => {
+              if (currColor === item.color) {
                   getCards(dispatch);
                   setCurrColor(null);
-              }else{
+              } else {
                   filterByColor(item.id, item.color);
               }
           }}

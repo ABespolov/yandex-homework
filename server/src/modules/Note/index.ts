@@ -14,7 +14,7 @@ export class Note {
     get isArchive(): boolean {
         return this.archive;
     }
-    set isArchive(flag: boolean){
+    set isArchive(flag: boolean) {
         this.archive = flag;
     }
 }

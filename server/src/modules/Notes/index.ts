@@ -10,29 +10,29 @@ class Notes {
             Instance.addNote(element);
         }
     }
-    private notes: Note[];
 
     private static getColor = (note: NoteData, colors: any) => {
         const colorObject = colors.find((item: any) => item.id === note.color);
         return colorObject ? colorObject.color : "#fff";
-    };
+    }
 
     private static getTags = (note: NoteData, tags: any) => {
         const tagsList = tags.filter((item: any) =>
             note.tags && note.tags.some((num) => num === item.id));
         return tagsList;
-    };
+    }
+    private notes: Note[];
 
     constructor() {
         this.notes = [];
     }
 
-    public getNotesByColor(color: string){
+    public getNotesByColor(color: string) {
         return this.notes.filter((item: Note) =>
             String(item.data.color) === color);
     }
 
-    public addToArchive(id: number){
+    public addToArchive(id: number) {
         const note = this.notes.find((item: Note) => item.data.created === id);
         note!.isArchive = !note!.isArchive;
     }

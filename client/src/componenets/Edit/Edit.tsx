@@ -1,9 +1,9 @@
 import React, {useEffect, useRef} from "react";
 import checkIcon from "../../icons/check.svg";
 import penIcon from "../../icons/pen.svg";
-import styles from "./Edit.module.scss";
 import {addToArchive} from "../../redux-hooks/actions";
 import {useReduxDispatch, useReduxState} from "../../redux-hooks/redux-hooks";
+import styles from "./Edit.module.scss";
 
 interface EditProps {
     id: number;

@@ -1,4 +1,5 @@
 import React, {createRef, useLayoutEffect, useRef, useState} from "react";
+import {useReduxState} from "../../redux-hooks/redux-hooks";
 import {Attachments} from "../Attachments";
 import {CurrentDate} from "../CurrentDate";
 import {Edit} from "../Edit";
@@ -6,10 +7,9 @@ import {List} from "../List";
 import {Tags} from "../Tags";
 import {Warning} from "../Warning";
 import styles from "./Note.module.scss";
-import {useReduxState} from "../../redux-hooks/redux-hooks";
 
 export interface NoteInterface {
-    noteData:{
+    noteData: {
         currentData: {
             color?: string;
             size?: string;
@@ -30,8 +30,8 @@ export interface NoteInterface {
                 text: string,
                 checked: boolean,
             }>;
-        }
-    }
+        },
+    };
 }
 
 export const Note: React.FC<NoteInterface> =
@@ -61,7 +61,7 @@ export const Note: React.FC<NoteInterface> =
                 }
                 note.current.style.gridRow = `span ${rows}`;
             }
-        }, [updateHeight, state.cards]);
+        }, [updateHeight, note]);
         return (
             <div ref={note} style={getStyle()} className={`${styles.note} ${styles[`size-${size}`]}`}>
                 {type === "image" ?
