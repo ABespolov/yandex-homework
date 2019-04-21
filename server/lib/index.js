@@ -16,20 +16,27 @@ app.get("/api/cards", (req, res) => {
             res.send(cards);
         }
         else {
-            res.status(400).send('Incorrect color');
+            res.status(400).send("Incorrect color");
         }
     }
     else {
-        res.send(nts.toArray());
+        res.send(nts.getAllNotes(false));
     }
 });
-app.post('/', function (req, res) {
-    console.log(req.body.user.name);
+app.get("/api/archive", (req, res) => {
+    if (req.query.id) {
+        nts.addToArchive(+req.query.id);
+        res.status(200).send("Added");
+    }
+    else {
+        res.send(nts.getAllNotes(true));
+    }
+});
+app.post("/api/add", (req, res) => {
+    console.log(req);
 });
 app.use(express.static(path.join(__dirname, '/../../client/build')));
 app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, '/../../client/build/index.html'));
 });
-app.listen(port, (req, res) => {
-    // console.log(`server listening on port: ${port}`);
-});
+app.listen(port);

@@ -19,11 +19,15 @@ class Notes {
     getNotesByColor(color) {
         return this.notes.filter((item) => String(item.data.color) === color);
     }
+    addToArchive(id) {
+        const note = this.notes.find((item) => item.data.created === id);
+        note.isArchive = !note.isArchive;
+    }
     addNote(data) {
         this.notes.push(new Note_1.Note(data));
     }
-    toArray() {
-        return this.notes;
+    getAllNotes(isArchive) {
+        return this.notes.filter((item) => isArchive === item.isArchive);
     }
     map(callback) {
         const arr = [];
