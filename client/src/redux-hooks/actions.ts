@@ -1,5 +1,5 @@
 import {uniFetchApi} from "../api/api";
-import {ADD_TO_ARCHIVE, FILTER_CARDS, GET_ARCHIVE, GET_CARDS} from "../api/constants";
+import {ADD_CARD, ADD_TO_ARCHIVE, DELETE_CARD, FILTER_CARDS, GET_ARCHIVE, GET_CARDS} from "../api/constants";
 
 export const getCards = (dispatch: any) => {
     uniFetchApi(GET_CARDS)
@@ -25,4 +25,15 @@ export const getArchive = (dispatch: any) => {
         .then((data) => {
             dispatch({type: "setCards", cards: data});
     });
+};
+
+export const addCard = (dispatch: any, card: {}) => {
+    uniFetchApi(ADD_CARD, '', card).then((data) => {
+        dispatch({type: "setCards", cards: data});
+    })
+};
+
+export const deleteCard = (dispatch: any, id: string, cards: {}) => {
+    uniFetchApi(DELETE_CARD, id);
+    dispatch({type: "setCards", cards});
 };

@@ -1,5 +1,7 @@
 import React, {useEffect, useState} from "react";
 import styles from "./NoteForm.module.scss";
+import {addCard} from "../../redux-hooks/actions";
+import {useReduxDispatch} from "../../redux-hooks/redux-hooks";
 
 interface NoteFormProps {
     showForm(state: boolean): void;
@@ -8,20 +10,17 @@ interface NoteFormProps {
 export const NoteForm: React.FC<NoteFormProps> = ({showForm}) => {
     const [header, setHeader] = useState("");
     const [text, setText] = useState("");
-    const nt = {
-        type: "text",
-        title: "Завтра дедлайн",
-        text: "Не забыть сверстать макет",
-        tags: [
-            1,
-            2,
-        ],
-        color: 2,
-        size: "s",
-        created: 1551714600000,
-    };
+    const dispatch = useReduxDispatch();
     const onSubmit = (e: any) => {
-        console.log(e.target.value);
+        const note = {
+            type: "text",
+            title: header,
+            text: text,
+            color: 0,
+            size: "s",
+            created: (new Date()).getDate(),
+        };
+        addCard(dispatch, note);
         e.preventDefault();
     };
     const disableScroll = (state: boolean) => {

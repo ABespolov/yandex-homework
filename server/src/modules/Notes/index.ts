@@ -41,6 +41,11 @@ class Notes {
         this.notes.push(new Note(data));
     }
 
+    public deleteNote(id: string) {
+        const index = this.notes.findIndex((item: Note) => item.data.created === +id);
+        this.notes.splice(index, 1);
+    }
+
     public getAllNotes(isArchive: boolean) {
         return this.notes.filter((item: Note) => isArchive === item.isArchive);
     }
