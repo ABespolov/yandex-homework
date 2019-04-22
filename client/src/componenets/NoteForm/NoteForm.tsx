@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from "react";
-import styles from "./NoteForm.module.scss";
 import {addCard} from "../../redux-hooks/actions";
 import {useReduxDispatch} from "../../redux-hooks/redux-hooks";
+import styles from "./NoteForm.module.scss";
 
 interface NoteFormProps {
     showForm(state: boolean): void;
@@ -15,7 +15,7 @@ export const NoteForm: React.FC<NoteFormProps> = ({showForm}) => {
         const note = {
             type: "text",
             title: header,
-            text: text,
+            text,
             color: 0,
             size: "s",
             created: (new Date()).getDate(),

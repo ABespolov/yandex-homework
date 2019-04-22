@@ -4,8 +4,8 @@ import closeIcon from "../../icons/close.svg";
 import penIcon from "../../icons/pen.svg";
 import {addToArchive, deleteCard} from "../../redux-hooks/actions";
 import {useReduxDispatch, useReduxState} from "../../redux-hooks/redux-hooks";
-import styles from "./Edit.module.scss";
 import {NoteForm} from "../NoteForm";
+import styles from "./Edit.module.scss";
 
 interface EditProps {
     id: number;

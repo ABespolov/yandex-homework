@@ -4,7 +4,7 @@ const path = require("path");
 const app = express();
 const data = require("../data.json");
 const Notes = require("./modules/Notes");
-const bodyParser = require('body-parser')
+const bodyParser = require("body-parser");
 const port = process.env.PORT || 8000;
 
 const nts = new Notes();
