@@ -20,14 +20,14 @@ export const Edit: React.FC<EditProps> = ({id}) => {
 
     return (
         <>
-        {showForm ? <NoteForm showForm={(state: boolean) => setShowForm(state)}/> : null}
         <div className={styles.edit}>
-            <div onClick={() => {
+            {showForm ? <NoteForm showForm={(state: boolean) => setShowForm(state)}/> : null}
+            <div className={styles.editCard} onClick={() => {
                 setShowForm(!showForm);
             }}>
                 <img src={penIcon} alt=""/>
             </div>
-            <div onClick={() => {
+            <div className={styles.addToArchive} onClick={() => {
                 addToArchive(dispatch, String(id), updateCards());
             }}>
                 <img src={checkIcon} alt=""/>

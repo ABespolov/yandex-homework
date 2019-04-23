@@ -12,7 +12,7 @@ sudo yarn run dev
 ```
 Модульные тесты:
 ```
-npm test
+yarn test
 cd client
 sudo yarn run test 
 ```
@@ -22,4 +22,7 @@ cd client
 selenium-standalone start
 sudo yarn run dev
 npx hermione ./hermione/simple.hermione.js
+
+(обновлние скриншотов, если нужно)
+npx hermione ./hermione/simple.hermione.js --update-refs
 ```

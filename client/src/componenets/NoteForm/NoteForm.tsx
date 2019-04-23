@@ -18,7 +18,7 @@ export const NoteForm: React.FC<NoteFormProps> = ({showForm}) => {
             text,
             color: 0,
             size: "s",
-            created: (new Date()).getDate(),
+            created: Date.now(),
         };
         addCard(dispatch, note);
         e.preventDefault();

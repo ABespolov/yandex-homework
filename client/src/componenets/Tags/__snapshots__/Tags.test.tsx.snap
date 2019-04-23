@@ -1,10 +1,19 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Warning: Warning render:  1`] = `
+exports[`SingleLetterControls: Tags render:  1`] = `
 ShallowWrapper {
   Symbol(enzyme.__root__): [Circular],
-  Symbol(enzyme.__unrendered__): <Warning
-    reminder={123456789}
+  Symbol(enzyme.__unrendered__): <Tags
+    tags={
+      Array [
+        Object {
+          "tag": "test1",
+        },
+        Object {
+          "tag": "test2",
+        },
+      ]
+    }
   />,
   Symbol(enzyme.__renderer__): Object {
     "batchedUpdates": [Function],
@@ -21,47 +30,44 @@ ShallowWrapper {
     "nodeType": "host",
     "props": Object {
       "children": Array [
-        <img
-          alt=""
-          src="warning.svg"
-        />,
-        <div>
-          Осталось 
-          больше 49 лет
-        </div>,
+        <span
+          className="tag"
+        >
+          test1
+        </span>,
+        <span
+          className="tag"
+        >
+          test2
+        </span>,
       ],
-      "className": "warning",
+      "className": "tags",
     },
     "ref": null,
     "rendered": Array [
       Object {
         "instance": null,
-        "key": undefined,
+        "key": "0",
         "nodeType": "host",
         "props": Object {
-          "alt": "",
-          "src": "warning.svg",
+          "children": "test1",
+          "className": "tag",
         },
         "ref": null,
-        "rendered": null,
-        "type": "img",
+        "rendered": "test1",
+        "type": "span",
       },
       Object {
         "instance": null,
-        "key": undefined,
+        "key": "1",
         "nodeType": "host",
         "props": Object {
-          "children": Array [
-            "Осталось ",
-            "больше 49 лет",
-          ],
+          "children": "test2",
+          "className": "tag",
         },
         "ref": null,
-        "rendered": Array [
-          "Осталось ",
-          "больше 49 лет",
-        ],
-        "type": "div",
+        "rendered": "test2",
+        "type": "span",
       },
     ],
     "type": "div",
@@ -73,47 +79,44 @@ ShallowWrapper {
       "nodeType": "host",
       "props": Object {
         "children": Array [
-          <img
-            alt=""
-            src="warning.svg"
-          />,
-          <div>
-            Осталось 
-            больше 49 лет
-          </div>,
+          <span
+            className="tag"
+          >
+            test1
+          </span>,
+          <span
+            className="tag"
+          >
+            test2
+          </span>,
         ],
-        "className": "warning",
+        "className": "tags",
       },
       "ref": null,
       "rendered": Array [
         Object {
           "instance": null,
-          "key": undefined,
+          "key": "0",
           "nodeType": "host",
           "props": Object {
-            "alt": "",
-            "src": "warning.svg",
+            "children": "test1",
+            "className": "tag",
           },
           "ref": null,
-          "rendered": null,
-          "type": "img",
+          "rendered": "test1",
+          "type": "span",
         },
         Object {
           "instance": null,
-          "key": undefined,
+          "key": "1",
           "nodeType": "host",
           "props": Object {
-            "children": Array [
-              "Осталось ",
-              "больше 49 лет",
-            ],
+            "children": "test2",
+            "className": "tag",
           },
           "ref": null,
-          "rendered": Array [
-            "Осталось ",
-            "больше 49 лет",
-          ],
-          "type": "div",
+          "rendered": "test2",
+          "type": "span",
         },
       ],
       "type": "div",

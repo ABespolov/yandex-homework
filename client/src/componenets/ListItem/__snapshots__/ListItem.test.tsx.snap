@@ -1,10 +1,16 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Warning: Warning render:  1`] = `
+exports[`ListItem: ListItem render:  1`] = `
 ShallowWrapper {
   Symbol(enzyme.__root__): [Circular],
-  Symbol(enzyme.__unrendered__): <Warning
-    reminder={123456789}
+  Symbol(enzyme.__unrendered__): <ListItem
+    isChecked={false}
+    item={
+      Object {
+        "checked": false,
+        "text": "text",
+      }
+    }
   />,
   Symbol(enzyme.__renderer__): Object {
     "batchedUpdates": [Function],
@@ -21,50 +27,46 @@ ShallowWrapper {
     "nodeType": "host",
     "props": Object {
       "children": Array [
-        <img
-          alt=""
-          src="warning.svg"
+        "text",
+        <input
+          id="text"
+          type="checkbox"
         />,
-        <div>
-          Осталось 
-          больше 49 лет
-        </div>,
+        <span
+          className="checkmark"
+        />,
       ],
-      "className": "warning",
+      "className": "container ",
+      "htmlFor": "text",
     },
     "ref": null,
     "rendered": Array [
+      "text",
       Object {
         "instance": null,
         "key": undefined,
         "nodeType": "host",
         "props": Object {
-          "alt": "",
-          "src": "warning.svg",
+          "id": "text",
+          "type": "checkbox",
         },
         "ref": null,
         "rendered": null,
-        "type": "img",
+        "type": "input",
       },
       Object {
         "instance": null,
         "key": undefined,
         "nodeType": "host",
         "props": Object {
-          "children": Array [
-            "Осталось ",
-            "больше 49 лет",
-          ],
+          "className": "checkmark",
         },
         "ref": null,
-        "rendered": Array [
-          "Осталось ",
-          "больше 49 лет",
-        ],
-        "type": "div",
+        "rendered": null,
+        "type": "span",
       },
     ],
-    "type": "div",
+    "type": "label",
   },
   Symbol(enzyme.__nodes__): Array [
     Object {
@@ -73,50 +75,46 @@ ShallowWrapper {
       "nodeType": "host",
       "props": Object {
         "children": Array [
-          <img
-            alt=""
-            src="warning.svg"
+          "text",
+          <input
+            id="text"
+            type="checkbox"
           />,
-          <div>
-            Осталось 
-            больше 49 лет
-          </div>,
+          <span
+            className="checkmark"
+          />,
         ],
-        "className": "warning",
+        "className": "container ",
+        "htmlFor": "text",
       },
       "ref": null,
       "rendered": Array [
+        "text",
         Object {
           "instance": null,
           "key": undefined,
           "nodeType": "host",
           "props": Object {
-            "alt": "",
-            "src": "warning.svg",
+            "id": "text",
+            "type": "checkbox",
           },
           "ref": null,
           "rendered": null,
-          "type": "img",
+          "type": "input",
         },
         Object {
           "instance": null,
           "key": undefined,
           "nodeType": "host",
           "props": Object {
-            "children": Array [
-              "Осталось ",
-              "больше 49 лет",
-            ],
+            "className": "checkmark",
           },
           "ref": null,
-          "rendered": Array [
-            "Осталось ",
-            "больше 49 лет",
-          ],
-          "type": "div",
+          "rendered": null,
+          "type": "span",
         },
       ],
-      "type": "div",
+      "type": "label",
     },
   ],
   Symbol(enzyme.__options__): Object {

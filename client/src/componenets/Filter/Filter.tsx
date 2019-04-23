@@ -20,7 +20,8 @@ export const Filter: React.FC<Filter> = ({colors}) => {
     };
 
     const filters = colors.map((item, index) =>
-     <div key={index} className={styles.color}
+     <div key={index} className={`${styles.color} 
+     ${currColor === item.color ? styles.select : ''}`}
           onClick={() => {
               if (currColor === item.color) {
                   getCards(dispatch);
@@ -29,8 +30,7 @@ export const Filter: React.FC<Filter> = ({colors}) => {
                   filterByColor(item.id, item.color);
               }
           }}
-          style={{backgroundColor: item.color,
-              opacity: currColor === item.color ? 1 : 0.6}}/>);
+          style={{backgroundColor: item.color}}/>);
     return (
     <div className={styles.filter}>
       <div className={styles.title}>Заметки</div>
