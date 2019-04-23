@@ -21,6 +21,8 @@ export const NoteForm: React.FC<NoteFormProps> = ({showForm}) => {
             created: Date.now(),
         };
         addCard(dispatch, note);
+        showForm(false);
+        disableScroll(false);
         e.preventDefault();
     };
     const disableScroll = (state: boolean) => {

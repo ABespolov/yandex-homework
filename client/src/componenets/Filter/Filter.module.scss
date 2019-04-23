@@ -30,16 +30,16 @@
         opacity: 1;
       }
 
-      .select{
-        opacity: 1;
-        border: 3px solid #aaa;
-      }
-
       &:not(:first-child) {
         margin-left: 16px;
       }
     }
   }
+}
+
+.select{
+  opacity: 1!important;
+  border: 3px solid #aaa!important;
 }
 
 

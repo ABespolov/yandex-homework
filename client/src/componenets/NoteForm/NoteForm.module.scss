@@ -1,13 +1,13 @@
 .noteFormBackground {
   position: absolute;
-  float: left;
-  z-index: 1;
-  width: 1000vw;
-  height: 1000vh;
+  z-index: 998;
   background: #000;
   opacity: 0.3;
-  left: -100vw;
-  bottom: -100vh;
+  position: absolute;
+  height: 10000vh;
+  width: 100%;
+  top:0;
+  left:0;
 }
 
 .noteForm {

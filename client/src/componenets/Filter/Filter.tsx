@@ -31,6 +31,11 @@ export const Filter: React.FC<Filter> = ({colors}) => {
               }
           }}
           style={{backgroundColor: item.color}}/>);
+
+    useEffect(() => {
+
+    }, [currColor]);
+
     return (
     <div className={styles.filter}>
       <div className={styles.title}>Заметки</div>

@@ -17,10 +17,12 @@ app.get("/api/cards", (req, res) => {
         if (colorObj) {
             const cards = nts.getNotesByColor(colorObj.color);
             res.send(cards);
-        } else {
+        }
+        else {
             res.status(400).send("Incorrect color");
         }
-    } else {
+    }
+    else {
         res.send(nts.getAllNotes(false));
     }
 });
@@ -28,7 +30,8 @@ app.get("/api/archive", (req, res) => {
     if (req.query.id) {
         nts.addToArchive(+req.query.id);
         res.status(200).send("Added");
-    } else {
+    }
+    else {
         res.send(nts.getAllNotes(true));
     }
 });

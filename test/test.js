@@ -9,10 +9,8 @@ describe("Notes class: ", function() {
         nts.addNote(data.notes[0]);
         assert.strictEqual(nts.getAllNotes(false).length, 1);
     });
-
-    Notes.factory(nts, data.notes, data.colors, data.tags);
-
     it("Initialization of notes array", function() {
+        Notes.factory(nts, data.notes, data.colors, data.tags);
         const notesArr = nts.getAllNotes(false);
         notesArr.forEach(item => {
             assert.strictEqual(typeof item.data.type, "string");
