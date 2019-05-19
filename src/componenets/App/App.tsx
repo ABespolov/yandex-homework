@@ -4,50 +4,52 @@ import {Filter} from "../Filter";
 import {Footer} from "../Footer";
 import {Header} from "../Header";
 import {Note} from "../Note";
-import {NoteInterface} from "../Note";
 import styles from "./App.module.scss";
+import {NoteData} from "./Notes";
+import {Notes} from "./Notes";
 
-const getColor = (note: NoteInterface) => {
-  const colorObject = data.colors.find((item) => item.id === note.color);
-  return colorObject ? colorObject.color : "#fff";
+const getColor = (note: NoteData) => {
+    const colorObject = data.colors.find((item) => item.id === note.color);
+    return colorObject ? colorObject.color : "#fff";
 };
 
-const getTags = (note: NoteInterface) => {
-  const tagsList = data.tags.filter((item) =>
-    // @ts-ignore
-    note.tags && note.tags.some((num) => num === item.id));
-  return tagsList;
+const getTags = (note: NoteData) => {
+    const tagsList = data.tags.filter((item) =>
+        note.tags && note.tags.some((num) => num === item.id));
+    return tagsList;
 };
 
 export const App = () => {
-  const notes = Array(data.notes.length).fill(0).map((item, index) => (
-    <Note
-      // @ts-ignore
-      color={getColor(data.notes[index])}
-      size={data.notes[index].size}
-      title={data.notes[index].title}
-      text={data.notes[index].text}
-      type={data.notes[index].type}
-      // @ts-ignore
-      tags={getTags(data.notes[index])}
-      // @ts-ignore
-      items={data.notes[index].items}
-      created={data.notes[index].created}
-      attachments={data.notes[index].attachments}
-      reminder={data.notes[index].reminder}
-      url={data.notes[index].url}
-    />
-  ));
-  return (
-    <>
-      <div className={styles.wrapper}>
-        <Header/>
-        <div className={styles.content}>
-          <Filter colors={data.colors}/>
-          <div className={styles.notesWrapper}>{notes}</div>
-        </div>
-      </div>
-      <Footer/>
-    </>
-  );
+    const nts = new Notes();
+    Notes.factory(nts, data.notes);
+
+    const notes = nts.map((item, index) => {
+        index = index || 0;
+        return <Note
+            key={item && item.data.created}
+            color={getColor(data.notes[index])}
+            size={item && item.data.size}
+            title={item && item.data.title}
+            text={item && item.data.text}
+            type={item && item.data.type}
+            tags={getTags(data.notes[index])}
+            items={item && item.data.items}
+            created={item && item.data.created}
+            attachments={item && item.data.attachments}
+            reminder={item && item.data.reminder}
+            url={item && item.data.url}
+        />;
+    });
+    return (
+        <>
+            <div className={styles.wrapper}>
+                <Header/>
+                <div className={styles.content}>
+                    <Filter colors={data.colors}/>
+                    <div className={styles.notesWrapper}>{notes}</div>
+                </div>
+            </div>
+            <Footer/>
+        </>
+    );
 };

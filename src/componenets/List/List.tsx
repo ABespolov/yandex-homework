@@ -6,7 +6,7 @@ interface List {
   update: any;
   text?: string;
   color?: string;
-  items: Array<{
+  items?: Array<{
     checked: boolean;
     text: string
   }>;
@@ -16,8 +16,8 @@ export const List: React.FC<List> = ({update, text, color, items}) => {
   const [listItem, setListItem] = useState(items);
   const check = (e: React.MouseEvent<HTMLLIElement>, txt: string) => {
     e.preventDefault();
-    const newItems = [...listItem];
-    newItems.forEach((item, index) => {
+    const newItems = listItem && [...listItem];
+    newItems && newItems.forEach((item) => {
       if (item.text.localeCompare(txt) === 0) {
         item.checked = !item.checked;
       }
@@ -26,7 +26,7 @@ export const List: React.FC<List> = ({update, text, color, items}) => {
     update(newItems);
   };
   const getItems = (isChecked: boolean) => {
-    return listItem.filter((item) => item.checked === isChecked)
+    return listItem && listItem.filter((item) => item.checked === isChecked)
       .map((item, index) =>
         <li key={index} onClick={(e) => check(e, item.text)}><ListItem item={item} isChecked={item.checked}/></li>,
       );

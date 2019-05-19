@@ -13,14 +13,14 @@ interface Attachments {
 export const Attachments: React.FC<Attachments> = ({attachments}) => {
   const links = attachments && attachments.filter((item) => item.type === "link");
   const images = attachments && attachments.filter((item) => item.type === "image");
-  const lnk = links && links.map((item) => (
-    <div className={styles.linkAttachment}>
+  const lnk = links && links.map((item, index) => (
+    <div key={index} className={styles.linkAttachment}>
       <img className={styles.linkIcon} src={linkIcon} alt=""/>
       <span>{item.url.replace(/(^.+\/\/)|(\/.+)/g, "")}</span>
     </div>
   ));
-  const img = images && images.map((item) => (
-    <div className={styles.attachment}>
+  const img = images && images.map((item, index) => (
+    <div key={index} className={styles.attachment}>
       <img src={item.url} alt=""/>
     </div>
   ));
