@@ -1,0 +1,78 @@
+.noteFormBackground {
+  position: absolute;
+  z-index: 998;
+  width: 100%;
+  height: 100%;
+  background: #000;
+  opacity: 0.3;
+}
+
+.noteForm {
+  position: fixed;
+  top: calc(50% - 30vh);
+  right: 0;
+  left: 0;
+  z-index: 999;
+  width: 80vw;
+  max-width: 500px;
+  height: 65vh;
+  max-height: 500px;
+  margin-right: auto;
+  margin-left: auto;
+  padding: 20px;
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.4);
+
+  input,
+ textarea {
+    display: block;
+    box-sizing: border-box;
+    width: 100%;
+    height: 10%;
+    padding-left: 10px;
+    border: 2px solid #e6e6e6;
+    border-radius: 4px;
+  }
+
+  textarea {
+    height: 50%;
+    margin-top: 20px;
+    padding: 10px;
+    resize: none;
+  }
+
+  select {
+    width: 40px;
+    margin-top: 10px;
+    margin-left: 10px;
+    background: #e6e6e6;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+
+  button {
+    display: block;
+    width: 100%;
+    min-height: 50px;
+    margin-top: 10px;
+    background: #fc0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+
+    &:hover {
+      background: darken(#fc0, 5%);
+    }
+  }
+
+  .closeButton {
+    background: #fff;
+    border: 2px solid #e6e6e6;
+
+    &:hover {
+      background: darken(#fff, 5%);
+    }
+  }
+}

@@ -1,3 +1,16 @@
 .edit img {
   margin-left: 10px;
 }
+
+.delete img {
+  width: 15px;
+}
+
+.edit div {
+  display: inline-block;
+  cursor: pointer;
+
+  &:hover {
+    transform: scale(1.2);
+  }
+}
