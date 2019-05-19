@@ -1,6 +1,6 @@
-
 ## Project link:
 https://yhomework.herokuapp.com/
+<<<<<<< feature/add-tests
 ##
 Чтобы запустить проект:
 ```
