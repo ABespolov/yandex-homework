@@ -1,5 +1,5 @@
 import {compareAsc, distanceInWords} from "date-fns";
-import ru from "date-fns/locale/ru";
+import ru from "date-fns";
 import React from "react";
 import warningIcon from "../../icons/warning.svg";
 import styles from "./Warning.module.scss";
