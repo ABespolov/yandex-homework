@@ -4,8 +4,8 @@ import closeIcon from "../../icons/close.svg";
 import penIcon from "../../icons/pen.svg";
 import {addToArchive, deleteCard} from "../../redux-hooks/actions";
 import {useReduxDispatch, useReduxState} from "../../redux-hooks/redux-hooks";
-import styles from "./Edit.module.scss";
 import {NoteForm} from "../NoteForm";
+import styles from "./Edit.module.scss";
 
 interface EditProps {
     id: number;
@@ -20,14 +20,14 @@ export const Edit: React.FC<EditProps> = ({id}) => {
 
     return (
         <>
-        {showForm ? <NoteForm showForm={(state: boolean) => setShowForm(state)}/> : null}
         <div className={styles.edit}>
-            <div onClick={() => {
+            {showForm ? <NoteForm showForm={(state: boolean) => setShowForm(state)}/> : null}
+            <div className={styles.editCard} onClick={() => {
                 setShowForm(!showForm);
             }}>
                 <img src={penIcon} alt=""/>
             </div>
-            <div onClick={() => {
+            <div className={styles.addToArchive} onClick={() => {
                 addToArchive(dispatch, String(id), updateCards());
             }}>
                 <img src={checkIcon} alt=""/>

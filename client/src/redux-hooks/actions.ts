@@ -28,9 +28,9 @@ export const getArchive = (dispatch: any) => {
 };
 
 export const addCard = (dispatch: any, card: {}) => {
-    uniFetchApi(ADD_CARD, '', card).then((data) => {
+    uniFetchApi(ADD_CARD, "", card).then((data) => {
         dispatch({type: "setCards", cards: data});
-    })
+    });
 };
 
 export const deleteCard = (dispatch: any, id: string, cards: {}) => {
